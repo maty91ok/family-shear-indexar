@@ -1,0 +1,6 @@
+streamlit
+pytesseract
+Pillow
+pdf2image
+fpdf
+googletrans==4.0.0-rc1
