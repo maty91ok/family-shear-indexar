@@ -29,9 +29,31 @@ st.set_page_config(page_title="Indexador FamilySearch con Traducción", layout="
 st.title("📜 Traductor de Registros para Indexación")
 st.markdown("Pegá el enlace del lote de FamilySearch y subí tu imagen o PDF escaneado.")
 
+st.markdown("Pegá el enlace del lote de FamilySearch y subí tu imagen o PDF escaneado.")
+
 lote_url = st.text_input("🔗 Enlace del lote (opcional):", "")
 
 archivo = st.file_uploader("📎 Subí una imagen o PDF", type=["png", "jpg", "jpeg", "pdf"])
+
+# 👉 Mostrar ayuda si pegó el link pero no subió imagen
+if lote_url and not archivo:
+    st.warning("⚠️ **No se puede descargar directamente desde FamilySearch.**")
+
+    st.info("### 🧾 ¿Qué podés hacer?\n"
+            "FamilySearch bloquea la descarga directa desde su visor de indexación. Pero podés usar una captura de pantalla.\n\n"
+            "### 🖼️ ¿Cómo tomar una captura?\n"
+            "**Windows** 🪟:\n"
+            "- Presioná `Windows + Shift + S`\n"
+            "- Seleccioná el área de la imagen\n"
+            "- Guardala como `.png` o `.jpg`\n\n"
+            "**Mac** 🍏:\n"
+            "- Presioná `Cmd + Shift + 4`\n"
+            "- Seleccioná el área de la imagen\n\n"
+            "### ✅ Luego:\n"
+            "- Volvé a esta app\n"
+            "- Subí la imagen capturada abajo 📤\n\n"
+            "**¡Y listo! La app hará el OCR y la traducción automáticamente.**")
+
 
 if archivo is not None:
     st.info("Procesando archivo...")
